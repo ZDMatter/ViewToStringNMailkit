@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Using Razor View Engine class and MailKit</h1>
+    <p>
+        <a asp-controller="ViewString" asp-action="EmployeeHtmlEmail" class="btn btn-primary">Generate Employee HTML List and Email</a>
+    </p>
+</div>
+<div>
+    <h3>MAilKit:</h3>
+
+    1. Signup on site <a href="https://ethereal.email/" target="_blank">ethereal.email</a> for fake SMTP service. Which allows to setup SMTP and a fake email process check.<br />
+    2. Add <b>Nuget Package MAilKit 3.4.1</b>  by Jeffrey Stedfast; Microsoft also suggest to use this one rather than System.Net<br />
+    3. Add respective generated email address and password in step 1 in AsppSettings.json or in code directly for testing purpose.<br />
+    4. Test ViewStringController -> EmployeeHtmlEmail()<br />
+    5. Generic Service component is available under Services -> EmailService.cs<br />
+    6. Check email on same etherel.email infterface under message<br /><br />
+
+    <p>
+        <b>NOTE:</b> <i>Change new values from Etherel.email after signup</i>
+    </p>
+    <h3>To Geenerate HTML string from/of a View:</h3>
+    1. Add Interface IViewRendererService<br />
+    2. In ViewRendererService by using RazorViewEngine setup to write ViewEngineResult in stream writer which process as a string output.<br />
+    3. ViewEngine.FindView() Find the respective View in Controller, View Name and Model<br />
+    e.g. var emailHtmlFromView = await this._renderer.RenderAsync(this, "Index", GetEmployees());<br />
+    4. Write ViewContext in stream<br />
+    5. String can be further use as respective HTML rendered.<br />
+
+    <h4>Reference:</h4>
+    <p>
+        <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.razor.irazorviewengine?view=aspnetcore-6.0">
+            IRazorViewEngine Interface (Microsoft.AspNetCore.Mvc.Razor) | Microsoft Learn
+        </a>
+    </p>
+    <p>
+        RazorViewEngine Class (Microsoft.AspNetCore.Mvc.Razor) | Microsoft Learn:<br />
+        https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.razor.razorviewengine?view=aspnetcore-6.0
+    </p>
+    <p>
+        RazorViewEngine.FindView(ActionContext, String, Boolean) Method (Microsoft.AspNetCore.Mvc.Razor) | Microsoft Learn:<br />
+        https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.razor.razorviewengine.findview?view=aspnetcore-6.0
+    </p>
+</div>

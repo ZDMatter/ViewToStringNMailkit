@@ -17,7 +17,9 @@ To Geenerate HTML string from/of a View:
 e.g. var emailHtmlFromView = await this._renderer.RenderAsync(this, "Index", GetEmployees());
 4. Write ViewContext in stream
 5. String can be further use as respective HTML rendered.
+
 Reference:
+
 IRazorViewEngine Interface (Microsoft.AspNetCore.Mvc.Razor) | Microsoft Learn
 
 RazorViewEngine Class (Microsoft.AspNetCore.Mvc.Razor) | Microsoft Learn:
